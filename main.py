@@ -1,9 +1,14 @@
+import random
+
 import pygame
 from dino import Dino
 from terrain import Terrain
+from cloud import Cloud
 
 player = Dino()
 terrain = Terrain()
+
+sky = [Cloud(600), Cloud(600 + random.randint(100, 300)), Cloud(600 + random.randint(350, 450))]
 
 back_color = (255, 255, 255)
 size = (600, 400)
@@ -16,9 +21,11 @@ FPS = 30
 clock = pygame.time.Clock()
 
 font = pygame.font.SysFont('candara', 32)
-color1 = (100, 0, 0)
-color2 = (0, 0, 50)
-text1 = font.render("tst", 1, color1, color2)
+color1 = (255, 126, 83)
+color2 = (255, 255, 255)
+text1 = font.render("Test 000", 1, color1, color2)
+
+a = 5
 
 running = True
 while running:
@@ -52,10 +59,16 @@ while running:
         screen.blit(block.surf, block.get_coordinates(), block.rect)
         block.move()
 
+    for cloud in sky:
+        cloud.check()
+        cloud.move()
+        screen.blit(cloud.surf, cloud.get_coordinates(), cloud.rect)
+
     terrain.ckeck_ground()
 
     screen.blit(player.dino_surf, player.coordinates(), player.dino_rect)
     pygame.display.update()
     clock.tick(FPS)
-
+    text1 = font.render(f"{a//10}", 1, color1, color2)
+    a+=1
 pygame.quit()
