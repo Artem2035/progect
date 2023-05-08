@@ -1,74 +1,59 @@
-import random
-
 import pygame
-from dino import Dino
-from terrain import Terrain
-from cloud import Cloud
+from game import Game
 
-player = Dino()
-terrain = Terrain()
-
-sky = [Cloud(600), Cloud(600 + random.randint(100, 300)), Cloud(600 + random.randint(350, 450))]
-
-back_color = (255, 255, 255)
-size = (600, 400)
+game = Game()
 
 pygame.init()
-screen = pygame.display.set_mode(size)
+screen = pygame.display.set_mode(game.size)
 pygame.display.set_caption("DinoRex")
 
-FPS = 30
 clock = pygame.time.Clock()
 
 font = pygame.font.SysFont('candara', 32)
-color1 = (255, 126, 83)
-color2 = (255, 255, 255)
-text1 = font.render("Test 000", 1, color1, color2)
 
-a = 5
+score_text = font.render("000", True, game.score_color, game.back_color)
 
-running = True
-while running:
+while game.running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            game.running = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                player.change_speed(-3)
+                game.player.change_speed(-3)
             elif event.key == pygame.K_RIGHT:
-                player.change_speed(3)
+                game.player.change_speed(3)
             elif event.key == pygame.K_SPACE:
-                if player.state != "jump" and player.state != "tilt":
-                    player.set_start_anim_time()
-                    player.change_state("jump")
+                if game.player.state != "jump" and game.player.state != "tilt":
+                    game.player.set_start_anim_time()
+                    game.player.change_state("jump")
             elif event.key == pygame.K_DOWN:
-                player.state = "tilt"
+                game.player.state = "tilt"
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
-                player.change_speed(3)
+                game.player.change_speed(3)
             elif event.key == pygame.K_RIGHT:
-                player.change_speed(-3)
+                game.player.change_speed(-3)
             elif event.key == pygame.K_DOWN:
-                player.state = "run"
+                game.player.state = "run"
 
-    player.move()
+    game.player.move()
 
-    screen.fill(back_color)
-    screen.blit(text1, (0, 0))
-    for block in terrain.terrain:
+    screen.fill(game.back_color)
+    screen.blit(score_text, (0, 0))
+    for block in game.game_terrain.terrain:
         screen.blit(block.surf, block.get_coordinates(), block.rect)
         block.move()
 
-    for cloud in sky:
+    game.game_terrain.ckeck_ground()
+
+    for cloud in game.sky:
         cloud.check()
         cloud.move()
         screen.blit(cloud.surf, cloud.get_coordinates(), cloud.rect)
 
-    terrain.ckeck_ground()
-
-    screen.blit(player.dino_surf, player.coordinates(), player.dino_rect)
+    screen.blit(game.player.dino_surf, game.player.coordinates(), game.player.dino_rect)
     pygame.display.update()
-    clock.tick(FPS)
-    text1 = font.render(f"{a//10}", 1, color1, color2)
-    a+=1
+    clock.tick(game.FPS)
+    score_text = font.render(f"{game.score // 10}", True, game.score_color, game.back_color)
+    game.score += 1
 pygame.quit()
