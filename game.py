@@ -10,7 +10,7 @@ class Game:
     def __init__(self):
         self.back_color = (255, 255, 255)
         self.score_color = (255, 126, 83)
-        self.size = (600, 400)
+        self.size = (600, 300)
         self.FPS = 30
         self.player = Dino()
         self.game_terrain = Terrain()

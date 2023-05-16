@@ -16,7 +16,7 @@ class Terrain:
             self.generate_terrain()
 
     def generate_terrain(self):
-        length = len(self.terrain)-random.randint(8,16)
+        length = len(self.terrain) - random.randint(8, 16)
 
         if any(isinstance(block, Barrier) for block in self.terrain[length:]):
             self.terrain.append(Ground(self.terrain[len(self.terrain) - 1].x + 20))
