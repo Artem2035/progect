@@ -17,3 +17,9 @@ class Game:
         self.sky = [Cloud(600), Cloud(600 + random.randint(100, 300)), Cloud(600 + random.randint(350, 450))]
         self.score = 0
         self.running = True
+
+        self.surf_retry_button = pygame.image.load('assets/retry_button.png')
+        self.surf_retry_button.set_colorkey((255, 255, 255))
+        self.retry_button_rect = self.surf_retry_button.get_rect()
+        self.retry_button_rect.x = 264
+        self.retry_button_rect.y = 118
