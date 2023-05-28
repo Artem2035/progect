@@ -20,6 +20,8 @@ class Dino:
 
         self.dino_rect = pygame.Rect(self.dino_surf.get_rect().x, self.dino_surf.get_rect().y,
                                      self.dino_surf.get_rect().width - 13, self.dino_surf.get_rect().height - 7)
+        self.dino_rect.x = self.x
+        self.dino_rect.y = self.y
         self.start_anim_jump = 0
 
     def move(self):

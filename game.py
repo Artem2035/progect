@@ -9,7 +9,8 @@ class Game:
 
     def __init__(self):
         self.back_color = (255, 255, 255)
-        self.score_color = (255, 126, 83)
+        self.best_score_color = (255, 126, 83)
+        self.score_color = (127,127,127)
         self.size = (600, 300)
         self.FPS = 30
         self.player = Dino()
@@ -18,8 +19,11 @@ class Game:
         self.score = 0
         self.running = True
 
+        #start_retry_button
         self.surf_retry_button = pygame.image.load('assets/retry_button.png')
-        self.surf_retry_button.set_colorkey((255, 255, 255))
-        self.retry_button_rect = self.surf_retry_button.get_rect()
-        self.retry_button_rect.x = 264
-        self.retry_button_rect.y = 118
+        self.surf_start_button = pygame.image.load('assets/start_button.png')
+        self.surf = self.surf_start_button
+        self.surf.set_colorkey((255, 255, 255))
+        self.button_rect = self.surf.get_rect()
+        self.button_rect.x = 264
+        self.button_rect.y = 118
