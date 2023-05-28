@@ -2,7 +2,10 @@ import pygame, time
 from barrier import Barrier
 from bird import Bird
 
+
 class Dino:
+    ''' Класс динозаврика(игрока) для игры в  DinoRex '''
+
     def __init__(self):
         self.x = 0
         self.y = 200
@@ -11,10 +14,10 @@ class Dino:
         self.state = "run"
         self.dino_surf_stay = pygame.image.load('assets/dino-menu.png')
         self.dino_surf_crash = pygame.image.load('assets/dino-crash.png')
-        self.dino_surf_run_1 =pygame.image.load('assets/dino-run1.png')
+        self.dino_surf_run_1 = pygame.image.load('assets/dino-run1.png')
         self.dino_surf_run_2 = pygame.image.load('assets/dino-run2.png')
         self.dino_surf_tilt_1 = pygame.image.load('assets/dino-tilt-1.png')
-        self.dino_surf_tilt_2 =pygame.image.load('assets/dino-tilt-2.png')
+        self.dino_surf_tilt_2 = pygame.image.load('assets/dino-tilt-2.png')
         self.dino_surf = self.dino_surf_stay
         self.dino_surf.set_colorkey((255, 255, 255))
 
@@ -25,6 +28,10 @@ class Dino:
         self.start_anim_jump = 0
 
     def move(self):
+        '''
+        Перемещение динозаврика по X или Y, обработка состоянии "бег", "прыжок" и  "наклон"
+        Обработка анимации бега, прыжка и наклона
+        '''
         if self.state == "run":
             self.y = 200
             if self.cadr <= 10:
@@ -56,25 +63,38 @@ class Dino:
         self.dino_surf.set_colorkey((255, 255, 255))
         self.dino_rect = pygame.Rect(self.dino_surf.get_rect().x, self.dino_surf.get_rect().y,
                                      self.dino_surf.get_rect().width - 13, self.dino_surf.get_rect().height - 7)
-        if self.x + self.speed >=0 and self.x + self.speed <=500:
+        if self.x + self.speed >= 0 and self.x + self.speed <= 500:
             self.x += self.speed
         self.dino_rect = self.dino_rect.move(self.x, self.y)
 
-
     def jump(self, speed_y: int):
+        ''' Перемещение динозаврика по Y  '''
         self.y += speed_y
 
     def change_speed(self, v: int):
+        '''
+        Определение скорости динозаврика, где V - скорость,
+        на которую изменяется скорость динозаврика
+        '''
         self.speed += v
 
-
     def change_state(self, state):
+        ''' изменение текущего состояния(бег, прыжок, наклон) на указанное  '''
         self.state = state
 
     def set_start_anim_time(self):
+        '''
+        Фиксироваие начало  времени анимации прыжка
+        Необходимо для корректной работы анимации прыжка
+        '''
         self.start_anim_jump = time.time()
 
     def collision(self, sprites):
+        '''
+        Проверка столкновения динозаврика и списка обьектов(препятствии, птицы)
+        :param sprites: Список обьектов, для проверки на столкновение
+        :return: Возвращает True, если не было столкновения
+        '''
         not_collide = True
         for index in range(len(sprites)):
             if isinstance(sprites[index], Barrier) and self.dino_rect.colliderect(sprites[index].rect):

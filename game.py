@@ -6,11 +6,14 @@ from cloud import Cloud
 
 
 class Game:
+    '''
+    Класс Game совмещает необходимые оъекты и параметры для игры
+    '''
 
     def __init__(self):
         self.back_color = (255, 255, 255)
         self.best_score_color = (255, 126, 83)
-        self.score_color = (127,127,127)
+        self.score_color = (127, 127, 127)
         self.size = (600, 300)
         self.FPS = 30
         self.player = Dino()
@@ -19,10 +22,9 @@ class Game:
         self.score = 0
         self.running = True
 
-        #start_retry_button
+        # retry_button
         self.surf_retry_button = pygame.image.load('assets/retry_button.png')
-        self.surf_start_button = pygame.image.load('assets/start_button.png')
-        self.surf = self.surf_start_button
+        self.surf = self.surf_retry_button
         self.surf.set_colorkey((255, 255, 255))
         self.button_rect = self.surf.get_rect()
         self.button_rect.x = 264

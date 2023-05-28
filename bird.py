@@ -1,9 +1,16 @@
 import pygame
 import random
 
+
 class Bird:
+    '''
+    Отдельный класс препятствия - птица
+    Представляет собой птицу длиною в 2 блока и блок земли под птицей(под первой половиной)
+    '''
+
     def __init__(self, x: int):
-        #генерация блока под птицей
+        '''Создание птицы и блоко земли под нею; x - начальное положение блока под птицей'''
+        # генерация блока под птицей
         self.block_x = x
         self.block_y = 230
         self.block_speed = 3
@@ -11,7 +18,7 @@ class Bird:
         self.surf.set_colorkey((255, 255, 255))
         self.rect = self.surf.get_rect()
         self.rect.move(self.block_x, self.block_y)
-        #генерация птицы
+        # генерация птицы
         self.x = x
         self.y = 180
         self.speed = 3
@@ -23,7 +30,10 @@ class Bird:
         self.bird_rect = self.bird_surf.get_rect()
 
     def move(self):
-        #движение препятствия - птицы
+        '''
+        Движение препятствия - птицы и блока
+        Анимация полета птицы
+        '''
         if self.cadr <= 10:
             self.bird_surf = self.bird_run_1
         elif self.cadr <= 20:
@@ -35,7 +45,7 @@ class Bird:
         self.bird_surf.set_colorkey((255, 255, 255))
         self.bird_rect = self.bird_surf.get_rect()
         self.bird_rect = self.bird_rect.move(self.x, self.y)
-        #передвижение блока под птицей
+        # передвижение блока под птицей
         self.block_x -= self.block_speed
         self.rect = self.surf.get_rect()
         self.rect = self.rect.move(self.block_x, self.block_y)

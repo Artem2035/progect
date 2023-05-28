@@ -2,14 +2,20 @@ import pygame
 from game import Game
 from bird import Bird
 
-
-
 pygame.init()
-screen = pygame.display.set_mode((600,300))
+screen = pygame.display.set_mode((600, 300))
 pygame.display.set_caption("DinoRex")
 font = pygame.font.SysFont('candara', 32)
-best_score = 0
+
+
 def init_game():
+    '''
+    Инициализирует начало игры
+    :return: Список из 2 обьектов:
+    1 - True, если игра будет продолжена, False если происходит выходи из игры
+    2 - Результат текущей игры, нужен для определения лучшего результата
+    из текущих попыток игры
+    '''
     game = Game()
     clock = pygame.time.Clock()
     score_text = font.render("000", True, game.score_color, game.back_color)
@@ -17,7 +23,7 @@ def init_game():
 
     game_retry = False
     game_stop = False
-    while not(game_stop):
+    while not (game_stop):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 game.running = False
@@ -40,10 +46,10 @@ def init_game():
                     game.player.change_speed(-3)
                 elif event.key == pygame.K_DOWN:
                     game.player.state = "run"
-            elif event.type == pygame.MOUSEBUTTONDOWN and not(game.running):
+            elif event.type == pygame.MOUSEBUTTONDOWN and not (game.running):
                 if game.button_rect.collidepoint(event.pos):
                     game_stop = True
-                    game_retry =True
+                    game_retry = True
 
         if game.running:
             screen.fill(game.back_color)
@@ -72,7 +78,7 @@ def init_game():
             screen.blit(game.surf, game.button_rect)
 
         score_text = font.render(f"{game.score // 10}", True, game.score_color, game.back_color)
-        if best_score > game.score//10:
+        if best_score > game.score // 10:
             best_score_text = font.render(f"{best_score}", True, game.best_score_color, game.back_color)
         else:
             best_score_text = font.render(f"{game.score // 10}", True, game.best_score_color, game.back_color)
@@ -84,11 +90,14 @@ def init_game():
 
     return game_retry, game.score
 
+
+# Игровой цикл
 game_loop = True
+best_score = 0
 while game_loop:
     params = init_game()
     game_loop = params[0]
-    score = params[1]//10
+    score = params[1] // 10
     if best_score < score:
         best_score = score
 pygame.quit()
