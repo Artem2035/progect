@@ -1,0 +1,15 @@
+name: CI/CD GitHub Actions
+on: [push]
+jobs:
+  pytest-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      with:
+          python-version: '3.9' # install the python version needed
+      run: |
+        python -m pip install --upgrade pip
+      run: python tests/test_cloud.py
+
+      - name: Coveralls
+        run: coveralls -t ${{ secrets.coveralls_token }} --root . -E ".*external.*" -E ".*tests.*"

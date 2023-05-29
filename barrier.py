@@ -13,7 +13,7 @@ class Barrier:
         image = random.randint(1, 3)
         self.surf = pygame.image.load(f'assets/barrier_{image}.png')
         self.rect = self.surf.get_rect()
-        self.rect.move(x, self.y)
+        self.rect = self.rect.move(self.x, self.y)
 
     def move(self):
         '''  изменение положения препятствия по x на значение скорости  '''

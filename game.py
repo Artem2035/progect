@@ -23,9 +23,7 @@ class Game:
         self.running = True
 
         # retry_button
-        self.surf_retry_button = pygame.image.load('assets/retry_button.png')
-        self.surf = self.surf_retry_button
+        self.surf = pygame.image.load('assets/retry_button.png')
         self.surf.set_colorkey((255, 255, 255))
         self.button_rect = self.surf.get_rect()
-        self.button_rect.x = 264
-        self.button_rect.y = 118
+        self.button_rect = self.button_rect.move(264,118)

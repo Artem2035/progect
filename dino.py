@@ -78,9 +78,15 @@ class Dino:
         '''
         self.speed += v
 
-    def change_state(self, state):
-        ''' изменение текущего состояния(бег, прыжок, наклон) на указанное  '''
-        self.state = state
+    def change_state(self, state: str):
+        '''
+        изменение текущего состояния(бег, прыжок, наклон) на указанное
+        :param state: состояние, на которое нужно изменить текущее состояние динозаврика
+        '''
+        if state == "run" or state == "tilt" or state == "jump":
+            self.state = state
+        else:
+            self.state = "run"
 
     def set_start_anim_time(self):
         '''
@@ -105,5 +111,9 @@ class Dino:
                 self.dino_surf = self.dino_surf_crash
                 not_collide = False
                 break
+        if self.state == "tilt" and not not_collide:
+            self.y = 200
+            self.x += 10
+            self.dino_rect = self.dino_rect.move(10, -17)
         self.dino_surf.set_colorkey((255, 255, 255))
         return not_collide

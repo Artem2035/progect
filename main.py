@@ -65,7 +65,7 @@ def init_game():
             for cloud in game.sky:
                 cloud.check()
                 cloud.move()
-                screen.blit(cloud.surf, cloud.get_coordinates(), cloud.rect)
+                screen.blit(cloud.surf, cloud.rect)
 
             game.player.move()
             game.running = game.player.collision(game.game_terrain.terrain)
@@ -74,7 +74,6 @@ def init_game():
 
         screen.blit(game.player.dino_surf, game.player.dino_rect)
         if not (game.running):
-            game.surf = game.surf_retry_button
             screen.blit(game.surf, game.button_rect)
 
         score_text = font.render(f"{game.score // 10}", True, game.score_color, game.back_color)

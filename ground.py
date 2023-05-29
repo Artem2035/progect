@@ -13,7 +13,7 @@ class Ground:
         image = random.randint(1, 8)
         self.surf = pygame.image.load(f'assets/ground_{image}.png')
         self.rect = self.surf.get_rect()
-        self.rect.move(self.x, self.y)
+        self.rect = self.rect.move(self.x, self.y)
 
     def move(self):
         ''' Перемещение объекта по  X координате справо налево, Y не меняется  '''

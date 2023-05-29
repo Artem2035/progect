@@ -12,14 +12,14 @@ class Cloud:
         self.speed = 4
         self.surf = pygame.image.load(f'assets/cloud.png')
         self.rect = self.surf.get_rect()
+        self.rect = self.rect.move(self.x, self.y)
 
-    def get_coordinates(self):
-        '''Возвращение текущих координат объекта'''
-        return self.x, self.y
 
     def move(self):
         ''' Перемещение облака с право налево по X координате'''
         self.x -= self.speed
+        self.rect = self.surf.get_rect()
+        self.rect = self.rect.move(self.x, self.y)
 
     def check(self):
         '''
