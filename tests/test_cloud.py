@@ -1,5 +1,5 @@
 import pytest
-#from cloud import Cloud
+from cloud import Cloud
 
 
 @pytest.mark.parametrize("x", [0,23])
