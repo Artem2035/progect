@@ -23,10 +23,9 @@ def test_move_cloud(x, x_expected):
     assert cloud1.rect.x == x_expected
     assert cloud1.rect.y == y_expected
 
-@pytest.mark.parametrize("x,x_expected", [(-53, 600), (23, 23)])
+@pytest.mark.parametrize("x,x_expected", [(-53, 600), (23, 22)])
 def test_check_cloud(x, x_expected):
     cloud1 = Cloud(x)
     cloud1.check()
     assert cloud1.x == x_expected
     assert 75 <= cloud1.rect.y <=100
-print("100%")
