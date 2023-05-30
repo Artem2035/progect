@@ -20,8 +20,9 @@ jobs:
           python -m pip install pygame
           python -c "from cloud import Cloud"
           
-      - name: execute py script # run main.py
-        run: python tests/test_cloud.py
+      - name: Test with pytest
+        run: |
+          pytest
 #     steps:
 #         uses: actions/checkout@v2, actions/setup-python@v4
 #         with:
