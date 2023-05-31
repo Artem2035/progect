@@ -18,7 +18,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pytest
           python -m pip install pygame
-          python -c "from cloud import Cloud"
           
       - name: Test with pytest
         run: |
