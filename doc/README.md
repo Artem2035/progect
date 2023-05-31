@@ -1,8 +1,8 @@
 [![CI/CD GitHub Actions](https://github.com/Artem2035/progect/actions/workflows/action.yml/badge.svg)](https://github.com/Artem2035/progect/actions/workflows/action.yml)
 [![Coverage Status](https://coveralls.io/repos/github/Artem2035/progect/badge.svg?branch=master)](https://coveralls.io/github/Artem2035/progect?branch=master)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Artem2035_progect&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Artem2035_progect)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Artem2035_progect&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Artem2035_progect)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Artem2035_progect&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Artem2035_progect)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Artem2035_progect&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Artem2035_progect)
 
 # DinoRex
 
