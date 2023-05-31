@@ -20,11 +20,9 @@ class Dino:
         self.dino_surf_tilt_2 = pygame.image.load('assets/dino-tilt-2.png')
         self.dino_surf = self.dino_surf_stay
         self.dino_surf.set_colorkey((255, 255, 255))
-
         self.dino_rect = pygame.Rect(self.dino_surf.get_rect().x, self.dino_surf.get_rect().y,
                                      self.dino_surf.get_rect().width - 13, self.dino_surf.get_rect().height - 7)
-        self.dino_rect.x = self.x
-        self.dino_rect.y = self.y
+        self.dino_rect = self.dino_rect.move(self.x, self.y)
         self.start_anim_jump = 0
 
     def move(self):
@@ -95,25 +93,25 @@ class Dino:
         '''
         self.start_anim_jump = time.time()
 
-    def collision(self, sprites):
+    def collision(self, sprites: list):
         '''
         Проверка столкновения динозаврика и списка обьектов(препятствии, птицы)
         :param sprites: Список обьектов, для проверки на столкновение
         :return: Возвращает True, если не было столкновения
         '''
-        not_collide = True
+        collide = False
         for index in range(len(sprites)):
             if isinstance(sprites[index], Barrier) and self.dino_rect.colliderect(sprites[index].rect):
                 self.dino_surf = self.dino_surf_crash
-                not_collide = False
+                collide = True
                 break
             if isinstance(sprites[index], Bird) and self.dino_rect.colliderect(sprites[index].bird_rect):
                 self.dino_surf = self.dino_surf_crash
-                not_collide = False
+                collide = True
                 break
-        if self.state == "tilt" and not not_collide:
+        if self.state == "tilt" and collide:
             self.y = 200
             self.x += 10
             self.dino_rect = self.dino_rect.move(10, -17)
         self.dino_surf.set_colorkey((255, 255, 255))
-        return not_collide
+        return collide

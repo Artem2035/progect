@@ -22,7 +22,6 @@ def test_init_barrier(x):
     assert test_bird.bird_surf.get_colorkey() == (255, 255, 255, 255)
 
 
-#@pytest.mark.parametrize("x",[(10),(599)])
 def test_bird_move():
     test_bird = Bird(0)
     test_bird.move()

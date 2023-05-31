@@ -23,7 +23,7 @@ def init_game():
 
     game_retry = False
     game_stop = False
-    while not (game_stop):
+    while not game_stop:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 game.running = False
@@ -46,7 +46,7 @@ def init_game():
                     game.player.change_speed(-3)
                 elif event.key == pygame.K_DOWN:
                     game.player.state = "run"
-            elif event.type == pygame.MOUSEBUTTONDOWN and not (game.running):
+            elif event.type == pygame.MOUSEBUTTONDOWN and not game.running:
                 if game.button_rect.collidepoint(event.pos):
                     game_stop = True
                     game_retry = True
@@ -68,7 +68,7 @@ def init_game():
                 screen.blit(cloud.surf, cloud.rect)
 
             game.player.move()
-            game.running = game.player.collision(game.game_terrain.terrain)
+            game.running = not game.player.collision(game.game_terrain.terrain)
 
             game.score += 1
 
