@@ -26,17 +26,17 @@ class Terrain:
         '''
         if self.terrain[0].x < -20:
             self.terrain.pop(0)
-            self.generate_terrain(0)
+            self.generate_terrain()
 
-    def generate_terrain(self, score: int):
-        '''процесс генерации последенго(30) блока игрового поля  '''
+    def generate_terrain(self):
+        '''процесс генерации последенго(31) блока игрового поля  '''
         length = len(self.terrain) - random.randint(8, 16)
 
         if (any(isinstance(block, Barrier) for block in self.terrain[length:]) or
                 any(isinstance(block, Bird) for block in self.terrain[length:])):
             self.terrain.append(Ground(self.terrain[len(self.terrain) - 1].x + 20))
         else:
-            if random.randint(0, 50) > 27:
+            if random.randint(0, 50) > 40:
                 self.terrain.append(Bird(self.terrain[len(self.terrain) - 1].x + 20))
             else:
                 self.terrain.append(Barrier(self.terrain[len(self.terrain) - 1].x + 20))

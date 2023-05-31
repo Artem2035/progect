@@ -17,7 +17,7 @@ class Bird:
         self.surf = pygame.image.load(f'assets/ground_1.png')
         self.surf.set_colorkey((255, 255, 255))
         self.rect = self.surf.get_rect()
-        self.rect.move(self.block_x, self.block_y)
+        self.rect = self.rect.move(self.block_x, self.block_y)
         # генерация птицы
         self.x = x
         self.y = 180
@@ -28,6 +28,7 @@ class Bird:
         self.bird_run_2 = pygame.image.load('assets/bird_2.png')
         self.bird_surf.set_colorkey((255, 255, 255))
         self.bird_rect = self.bird_surf.get_rect()
+        self.bird_rect = self.bird_rect.move(self.x, self.y)
 
     def move(self):
         '''
