@@ -23,6 +23,8 @@ jobs:
         run: |
           python -m pytest
       - name: Coveralls
+        env:
+            GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: |
             pip install coveralls
             coverage run -m pytest tests/
