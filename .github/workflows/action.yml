@@ -25,7 +25,7 @@ jobs:
       - name: Coveralls
         run: |
             pip install coveralls
-            coverage run --source=mypkg -m pytest tests/
+            coverage run -m pytest tests/
             coveralls
 
 #   sonarcloud:
