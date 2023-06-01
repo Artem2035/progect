@@ -2,7 +2,7 @@ import pytest
 from game import Game
 
 
-def test_init_Game():
+def test_init_game():
     g1 = Game()
     assert g1.back_color == (255, 255, 255)
     assert g1.best_score_color == (255, 126, 83)
@@ -16,12 +16,3 @@ def test_init_Game():
     assert g1.button_rect.y == 118
     assert g1.surf.get_colorkey() == (255, 255, 255, 255)
 
-    # self.player = Dino()
-    # self.game_terrain = Terrain()
-    # self.sky = [Cloud(600), Cloud(600 + random.randint(100, 300)), Cloud(600 + random.randint(350, 450))]
-    #
-    # # retry_button
-    # self.surf = pygame.image.load('assets/retry_button.png')
-    # self.surf.set_colorkey((255, 255, 255))
-    # self.button_rect = self.surf.get_rect()
-    # self.button_rect = self.button_rect.move(264, 118)
