@@ -1,8 +1,8 @@
 [![CI/CD GitHub Actions](https://github.com/Artem2035/progect/actions/workflows/action.yml/badge.svg)](https://github.com/Artem2035/progect/actions/workflows/action.yml)
-[![Coverage Status](https://coveralls.io/repos/github/Artem2035/progect/badge.svg?branch=master&service=github)](https://coveralls.io/github/Artem2035/progect?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/Artem2035/progect/badge.svg?branch=master)](https://coveralls.io/github/Artem2035/progect?branch=master)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Artem2035_progect&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Artem2035_progect)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Artem2035_progect&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Artem2035_progect)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Artem2035_progect&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Artem2035_progect)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Artem2035_progect&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Artem2035_progect)
 
 # DinoRex
 
@@ -26,5 +26,21 @@
 ## Функциональные модели программного проекта
 
 1. Пользователь нажимает пробел - динозаврик прыгает - пользователь нажимает стрелкочку вниз - динозаврик делает наклон вниз - пользователь ничего не делает - динозаврик продолжает движение вперед - пользователь сталкивает динозаврика и препятствие - приложение выводит сообщение о проигрыше
+2. Диаграммы активности:
+	1. Сценарии1: ![Описание](https://github.com/Artem2035/progect/blob/master/doc/activity1.dia)
+	2. Сценарии2: ![Описание](https://github.com/Artem2035/progect/blob/master/doc/activity2.dia)
+	3. Сценарии3: ![Описание](https://github.com/Artem2035/progect/blob/master/doc/activity3.dia)
+3. ![Диаграмма состоянии](https://github.com/Artem2035/progect/blob/master/doc/smd-dino.dia)
+4. ![Диаграмму последовательности](https://github.com/Artem2035/progect/blob/master/doc/seq-diam.dia)
 
+## Структурные модели программного проекта
+1. ![Диаграммы классов](https://github.com/Artem2035/progect/blob/master/doc/class.dia)
+2. ![Диаграммы объектов](https://github.com/Artem2035/progect/blob/master/doc/object.dia)
+
+## Реализация
+В ходе разработы игры были реалезован следующий функционал игры:
+1. Пользователь должен иметь возможность управлять динозавриком (прыжок, уклонение)
+2. Пользователь должен иметь возможность столкнуться с объктом-препятствием: кактус, камень, птица и т.д.
+3. Пользователь должен иметь возможность видеть проиденное динозавриком расстояние от начала движения до столкновение с объктом-препятствием
+4. Пользователь должен иметь возможность видеть максимальное проиденное динозавриком расстояние
 
